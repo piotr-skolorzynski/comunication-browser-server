@@ -9,4 +9,9 @@ body {
 
 ul[data-id="list"] {
     list-style: none;
+    font-size: 2rem;
+}
+
+.user {
+    padding: 1rem;
 }
