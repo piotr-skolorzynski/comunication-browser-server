@@ -26,12 +26,19 @@ const createUsersList = users => {
     list.innerHTML = html;
 }
 
-async function renderUsers() {
-    const url = 'https://jsonplaceholder.typicode.com/users';
-    const response = await fetch(url);
-    const users = await response.json();
-    createUsersList(users);
+const renderUsers = async () => {
+    try {
+        const url = 'https://jsonplaceholder.typicode.com/users';
+        const response = await fetch(url);
+        const users = await response.json();
+        createUsersList(users);
+    } catch (err) {
+        if (err instanceof Error) {
+            console.log(`${err.name}: ${err.message}`);
+        } else {
+            console.log('something went wrong');
+        }
+    }
 }
-
 
 document.addEventListener('DOMContentLoaded', renderUsers);
